@@ -1,0 +1,71 @@
+{
+  "team_id": "LSH26-T001",
+  "problem_id": "P02",
+  "repository_name": "lsh26-t001-p02",
+  "live_url": "https://nafizurnayem.github.io/lsh26-t001-p02/",
+  "demo_video_url_optional": "",
+  "event_start_code": "LSH26-8490-C900",
+  "repository_created_before_release": false,
+  "pre_event_materials": [],
+  "sample_data": {
+    "loads_published_fixture": true,
+    "method": "Loaded directly into the application state from the provided backend/JSON file.",
+    "reset_instructions": "Refresh the browser page to clear the local state and restore the initial data."
+  },
+  "problem_solving_method": "Built a Single Page Application (SPA) using Vanilla JavaScript and Tailwind CSS to dynamically calculate date differences and map financial values in real-time on one unified screen.",
+  "requirements": {
+    "R1": {
+      "status": "complete",
+      "evidence": "index.html (Stock list table and initial data array)"
+    },
+    "R2": {
+      "status": "complete",
+      "evidence": "index.html (KPI Summary Grid and categorize() JS function)"
+    },
+    "R3": {
+      "status": "complete",
+      "evidence": "index.html (markReturned() JS function and 'Returned Items' tab)"
+    },
+    "R4": {
+      "status": "complete",
+      "evidence": "index.html (updateKPIs() JS function calculating quantity * unit_price_bdt)"
+    }
+  },
+  "team_members": [
+    {
+      "registered_name": "Miraj Hossain",
+      "github_username": "nafizurnayem",
+      "major_contribution": "Frontend UI/UX development, DOM manipulation, and state management logic.",
+      "evidence_paths_or_commits": [
+        "index.html",
+        "README.md",
+        "LICENSES.md",
+        "EVENT.md"
+      ]
+    },
+    {
+      "registered_name": "YOUR TEAMMATE'S NAME HERE",
+      "github_username": "YOUR TEAMMATE'S GITHUB HERE",
+      "major_contribution": "Backend API development and JSON data structuring.",
+      "evidence_paths_or_commits": [
+        "Backend logic files"
+      ]
+    }
+  ],
+  "major_design_decisions": [
+    "Used a Single Page Application (SPA) with tabs to strictly satisfy the 'one screen' dashboard requirement.",
+    "Used Vanilla JS and Tailwind CDN to minimize build steps and deployment complications for rapid prototyping."
+  ],
+  "known_limitations": [
+    "Data persistence relies on the backend; if the backend connection drops, returned items are only stored in local session memory."
+  ],
+  "ai_tools_used": [
+    {
+      "tool": "Gemini",
+      "used_for": "Frontend boilerplate generation, Tailwind CSS structuring, JSON manifest generation, and Git command assistance.",
+      "how_output_was_verified": "Manually reviewed the HTML/JS, tested date categorization logic in browser, and verified compliance against event constraints."
+    }
+  ],
+  "licenses_file": "LICENSES.md",
+  "declaration": "The information above is complete and truthful to the best of the team's knowledge."
+}
