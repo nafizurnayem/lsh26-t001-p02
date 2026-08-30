@@ -1,7 +1,14 @@
 import os
+import sys
 import json
 from datetime import datetime, date
 from pathlib import Path
+
+# Add current directory to path for Cloud deployment compatibility
+CURRENT_DIR = Path(__file__).parent.resolve()
+if str(CURRENT_DIR) not in sys.path:
+    sys.path.insert(0, str(CURRENT_DIR))
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
