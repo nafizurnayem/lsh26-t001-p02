@@ -9,13 +9,8 @@
 ## 📌 Problem Overview
 PharmaShelf is an end-to-end pharmacy inventory auditing and expiry management system built to tackle medicine waste, prevent expired dispensing, and streamline supplier returns.
 
-### Core Expiry Classification Rules (Asia/Dhaka timezone)
-- **🚨 Expired:** Days Left `< 0` (Immediate removal & return required)
-- **⚠️ Expiring Soon:** `0 <= Days Left <= 30` (High financial risk, priority return)
-- **⏳ Expiring Medium:** `31 <= Days Left <= 90` (Discount / fast-sale candidates)
-- **🛡️ Safe Stock:** Days Left `> 90` (Active inventory)
 
-*Returned batches are tracked with timestamps and excluded from active shelf metrics and financial loss totals.*
+
 
 ---
 
@@ -32,42 +27,7 @@ lsh26-t001-p02/
 └── event.md          # Team and problem identification
 ```
 
----
 
-## 🚀 Quick Start Guide
-
-### Option 1: Python Streamlit Dashboard
-
-1. **Install requirements**:
-   ```bash
-   pip install -r streamlit_app/requirements.txt
-   ```
-2. **Launch Streamlit**:
-   ```bash
-   streamlit run streamlit_app/app.py
-   ```
-   *Features: Switch benchmark test cases (PUB-01 to PUB-20), view Plotly charts, audit shelf inventory, execute vendor returns, and export audit reports.*
-
----
-
-### Option 2: Full-Stack Web Application (Express API + React UI)
-
-#### 1. Start the Backend API (Port 4000)
-```bash
-cd backend
-npm install
-npm run data:seed    # Seeds benchmark dataset
-npm run dev          # Starts Express API on http://localhost:4000
-```
-
-#### 2. Start the Frontend UI (Port 5173)
-```bash
-cd frontend
-npm install
-npm run dev          # Starts Vite React dev server
-```
-
----
 
 ## 📊 API Endpoints
 - `GET /health` — Health check
