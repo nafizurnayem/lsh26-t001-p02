@@ -15,12 +15,27 @@ const validStatuses = new Set<ExpiryStatus>([
   "safe",
 ]);
 
+const allowedOrigins = config.corsOrigin
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+function resolveAllowedOrigin(requestOrigin: string | undefined): string {
+  if (allowedOrigins.includes("*")) return "*";
+  if (requestOrigin && allowedOrigins.includes(requestOrigin)) {
+    return requestOrigin;
+  }
+  return allowedOrigins[0] ?? "*";
+}
+
 export function createApp() {
   const app = express();
   app.disable("x-powered-by");
   app.use(express.json());
   app.use((request, response, next) => {
-    response.header("Access-Control-Allow-Origin", config.corsOrigin);
+    const allowOrigin = resolveAllowedOrigin(request.headers.origin);
+    response.header("Access-Control-Allow-Origin", allowOrigin);
+    if (allowOrigin !== "*") response.header("Vary", "Origin");
     response.header("Access-Control-Allow-Methods", "GET,PATCH,OPTIONS");
     response.header("Access-Control-Allow-Headers", "Content-Type");
     if (request.method === "OPTIONS") return response.sendStatus(204);

@@ -5,7 +5,20 @@ import { seedDataFile } from "../db/seed.js";
 import type { MedicineRow } from "./types.js";
 
 function ensureDataFile(): void {
-  if (!fs.existsSync(config.dataFilePath)) seedDataFile();
+  if (fs.existsSync(config.dataFilePath)) return;
+
+  // Serverless: hydrate the writable copy from the read-only file that ships
+  // with the deployment, so we don't need the large public dataset at runtime.
+  if (
+    config.bundledDataFilePath !== config.dataFilePath &&
+    fs.existsSync(config.bundledDataFilePath)
+  ) {
+    fs.mkdirSync(path.dirname(config.dataFilePath), { recursive: true });
+    fs.copyFileSync(config.bundledDataFilePath, config.dataFilePath);
+    return;
+  }
+
+  seedDataFile();
 }
 
 function readMedicines(): MedicineRow[] {
