@@ -104,7 +104,14 @@ export function createApp() {
   app.use(
     (error: unknown, _request: Request, response: Response, _next: NextFunction) => {
       console.error(error);
-      response.status(500).json({ error: "Internal server error." });
+      const body: { error: string; detail?: string; stack?: string } = {
+        error: "Internal server error.",
+      };
+      if (config.exposeErrors && error instanceof Error) {
+        body.detail = error.message;
+        body.stack = error.stack;
+      }
+      response.status(500).json(body);
     },
   );
 

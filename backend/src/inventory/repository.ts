@@ -18,7 +18,16 @@ function ensureDataFile(): void {
     return;
   }
 
-  seedDataFile();
+  try {
+    seedDataFile();
+  } catch (error) {
+    throw new Error(
+      `Unable to prepare medicine data. writable=${config.dataFilePath} ` +
+        `bundled=${config.bundledDataFilePath} (exists=${fs.existsSync(config.bundledDataFilePath)}) ` +
+        `dataset=${config.datasetPath} (exists=${fs.existsSync(config.datasetPath)}). ` +
+        `cause: ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
 }
 
 function readMedicines(): MedicineRow[] {
