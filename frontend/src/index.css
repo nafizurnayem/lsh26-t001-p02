@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  color: #f8fafc;
+  background: #050b1d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #050b1d;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+::selection {
+  color: #021018;
+  background: #22d3ee;
+}
+
+body {
+  background:
+    radial-gradient(circle at 72% 15%, rgba(22, 199, 232, 0.09), transparent 28rem),
+    radial-gradient(circle at 18% 85%, rgba(38, 211, 162, 0.06), transparent 26rem),
+    #050b1d;
+}
+
+* {
+  scrollbar-color: #334565 #0a1328;
+  scrollbar-width: thin;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

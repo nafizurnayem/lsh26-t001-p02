@@ -1,0 +1,22 @@
+{
+  "name": "pharmacy-expiry-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && node --env-file-if-exists=.env --watch dist/src/server.js",
+    "build": "tsc -p tsconfig.json",
+    "start": "node --env-file-if-exists=.env dist/src/server.js",
+    "data:seed": "npm run build && node --env-file-if-exists=.env dist/src/db/seed.js",
+    "test": "npm run build && node --test dist/tests/expiry.test.js",
+    "check": "npm test"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
